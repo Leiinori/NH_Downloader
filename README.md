@@ -3,8 +3,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-green)
-![Build](https://img.shields.io/badge/build-passing-brightgreen)
-![Stars](https://img.shields.io/github/stars/<<<你的帳號>>>/<<<你的專案名稱>>>?style=social)
+![Build](https://img.shields.io/badge/build-running-blue)
 
 ---
 
