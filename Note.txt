@@ -20,7 +20,7 @@ python -m venv nh_downloader
 安裝的 Python 版本是 py 啟動器
 Windows 預設會裝 py（Python Launcher），所以 python 指令可能不存在
 
-要改用py而不是python
+解法 : 要改用py而不是python
 
 修正後使用, 在資料夾中可看到建立的虛擬環境資料夾
 cd "C:\Lei Project\NH_Downloader"
@@ -50,3 +50,29 @@ pip install requests beautifulsoup4 Pillow
 =>選擇.\nh_downloader\Scripts\python.exe
 
 ----------
+
+##########測試版試跑##########
+#1 :
+遇到錯誤
+
+PS C:\Lei Project\NH_Downloader> & "C:/Lei Project/NH_Downloader/nh_downloader/Scripts/Activate.ps1"
+& : 因為這個系統上已停用指令碼執行，所以無法載入 C:\Lei Project\NH_Downloader\nh_downloade
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+查詢原因是PowerShell 的執行政策（Execution Policy）是微軟為了防止惡意腳本執行而設計的安全機制。
+
+解法 : 開啟新的PowerShell,輸入
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+----------
+
+#2 :
+遇到錯誤
+
+403 Client Error: Forbidden for url
+
+原本用request嘗試進行連線, 加入headers嘗試偽裝成瀏覽器依然出現403
+
+2025/08/12想法: 使用Selenium來進行爬蟲
