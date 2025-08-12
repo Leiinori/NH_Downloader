@@ -61,7 +61,8 @@ PS C:\Lei Project\NH_Downloader> & "C:/Lei Project/NH_Downloader/nh_downloader/S
     + CategoryInfo          : SecurityError: (:) [], PSSecurityException
     + FullyQualifiedErrorId : UnauthorizedAccess
 
-查詢原因是PowerShell 的執行政策（Execution Policy）是微軟為了防止惡意腳本執行而設計的安全機制。
+查詢原因
+是PowerShell 的執行政策（Execution Policy）是微軟為了防止惡意腳本執行而設計的安全機制。
 
 解法 : 開啟新的PowerShell,輸入
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
@@ -76,3 +77,48 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 原本用request嘗試進行連線, 加入headers嘗試偽裝成瀏覽器依然出現403
 
 2025/08/12想法: 使用Selenium來進行爬蟲
+
+----------
+
+##########用Selenium來進行爬蟲##########
+#1 :
+安裝Selenium
+pip install selenium pillow beautifulsoup4 lxml
+
+這裡我是使用Chrome瀏覽器去進行操作
+查看Chrome瀏覽器版本的方法:
+
+chrome://version/
+
+查詢到我現在的瀏覽器版本為139.0.7258.67 (正式版本) (64 位元)
+
+#2 :
+下載ChromeDriver
+
+https://googlechromelabs.github.io/chrome-for-testing/#stable
+
+根據前面查到的瀏覽器版本下載, 將ChromeDriver置於專案同資料夾中
+
+#3 :
+首次試跑失敗
+
+driver = webdriver.Chrome(executable_path=chromedriver_path, options=chrome_options)   
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'executable_path'
+
+查找原因 :
+是因為新版 selenium（4.x 以上）已經把 executable_path 改成用 Service 物件來指定了
+不能直接當參數傳給 webdriver.Chrome(), 舊版寫法不能用了
+
+ChatGPT提供的修正:
+from selenium.webdriver.chrome.service import Service
+
+chromedriver_path = r"C:\Lei Project\NH_Downloader\chromedriver-win64\chromedriver.exe"
+service = Service(executable_path=chromedriver_path)
+driver = webdriver.Chrome(service=service, options=chrome_options)
+
+#4 :
+經過多次測試後依然連線失敗, 使用非 headless 模式, 觀看實際跳出瀏覽器的畫面得到連線失敗的原因
+
+網站多了Cloudflare的驗證, 沒有勾選完成驗證的話會連線失敗
+
+這個問題待解
