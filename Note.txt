@@ -1,0 +1,52 @@
+此為記錄編寫過程遇到的問題與困難還有解決辦法及心得,作為自己的學習歷程記錄
+
+##########建立虛擬環境##########
+#1 :
+之前試寫版是用Anaconda的環境下所開發,
+最後打包成exe時發現檔案肥大(24Xmb),
+經查詢後發現打包時會將環境中所安裝的套件也一併打包,
+且用Anaconda的環境進行打包時很容易失敗,
+故這次使用Python乾淨環境, 針對此專案建立個nh_downloader的虛擬環境,
+僅安裝這個project所會用到的套件
+
+----------
+
+#2 :
+在cmd中使用指令, 欲在將虛擬環境建立在專案的資料夾中
+cd "C:\Lei Project\NH_Downloader"
+python -m venv nh_downloader
+
+發現沒有回應, 經查找除錯結果是:
+安裝的 Python 版本是 py 啟動器
+Windows 預設會裝 py（Python Launcher），所以 python 指令可能不存在
+
+要改用py而不是python
+
+修正後使用, 在資料夾中可看到建立的虛擬環境資料夾
+cd "C:\Lei Project\NH_Downloader"
+py -m venv nh_downloader
+
+----------
+
+#3 :
+啟用虛擬環境, cmd指令
+nh_downloader\Scripts\activate
+
+畫面看到
+(nh_downloader) C:\Lei Project\NH_Downloader>
+
+----------
+
+#4 :
+在虛擬環境中安裝所需要的套件
+pip install requests beautifulsoup4 Pillow
+
+----------
+
+#5 :
+讓VS Code使用這個虛擬環境來進行編譯,
+右下角會有一個顯示 Python x.x.x 的欄位(我這裡是顯示3.13.6),
+點擊=>上方的"Select Interpreter"
+=>選擇.\nh_downloader\Scripts\python.exe
+
+----------
