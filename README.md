@@ -19,6 +19,9 @@
 - 適用對象：瀏覽N網且有儲存圖片需求者
 - 使用的程式語言：Python
 
+- 2025/8/12 更新測試結果，網站近期有針對爬蟲有進行反爬蟲防護，需要進行驗證勾選我不是機器人 <br>
+- 故現階段無法使用中 <br>
+
 ---
 
 ## ✨ 功能特色
@@ -29,42 +32,48 @@
 ---
 
 ## 📂 專案結構
-<<<專案資料夾名稱>>>/
-├── src/ # 主程式碼
-├── docs/ # 文件與截圖
-├── tests/ # 測試程式
-├── LICENSE
-└── README.md
+<<<NH_downloader>>>/
+├── nhentai_downloader.py # 主程式碼 <br>
+├── Note # 編寫心得與註記 <br>
+├── LICENSE <br>
+└── README.md <br>
 
 ---
 
 ## 🚀 安裝與使用
 
 ### 1️⃣ 環境需求
-- <<<例如：Python >= 3.8>>>
-- <<<其他依賴>>>
+- Python-3.13.6 # 開發所用的版本 <br>
+- requests <br>
+- beautifulsoup4 <br>
+- Pillow <br>
 
 ### 2️⃣ 安裝步驟
 ```bash
 # 下載專案
-git clone https://github.com/<<<你的帳號>>>/<<<你的專案名稱>>>.git
-cd <<<你的專案名稱>>>
+git clone https://github.com/Leiinori/NH_Downloader.git
 
 # 安裝依賴
-<<<安裝指令，例如：npm install>>>
+pip install requests beautifulsoup4 Pillow
 
 # 啟動專案
-<<<啟動指令，例如：npm start>>>
+
 ```
 
 ---
 
 ### 3️⃣ 使用方式
 <<<步驟 1>>>
+安裝Python
 
 <<<步驟 2>>>
+安裝所需的套件
 
 <<<步驟 3>>>
+下載主程式檔nhentai_downloader.py
+
+<<<步驟 4>>>
+編譯執行程式，輸入對應的6碼開始下載
 
 ---
 
